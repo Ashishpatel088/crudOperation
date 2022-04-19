@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>formvalidation</title>
+</head>
+<body onload="">
+    <section class="main-section">
+        <div class="container">
+           <div class="containt-form-section">
+                <div class="form-validate">
+                    
+                    <form class="form-content" name="contactForm" method="post" autocomplete="off">
+                        <div class="header">Registration form</div>
+                        <div class="form-group">
+                            <div class="title-name">
+                                <label for="Name">FirstName:</label>
+                            </div>
+                            <div class="input-name">
+                                <input type="text" id="Name" name="fname" oninput="firstnameValidation()" autocomplete="off" required />
+                                <div class="error-msg">
+                                    <p id="text-error"></p>
+                                </div>
+                            </div>
+                        </div>
+                    <!--  <div class="form-group">
+                            <div class="title-name">
+                                <label for="Name">LastName:</label>
+                            </div>
+                            <div class="input-name">
+                                <input type="text" id="Name" name="fname" required />
+                                <div class="error-msg">
+                                    <p id="form-error">hello</p>
+                                </div>
+                            </div>
+                        </div> -->
+                        
+                        <div class="form-group">
+                            <div class="title-name">
+                                <label for="Email">email:</label>
+                            </div>
+                            <div class="input-name">
+                                <input type="email" id="Email" name="email" oninput="emailValidatiojn()" autocomplete="off" required />
+                                <div class="error-msg">
+                                    <p id="email-error"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="title-name">
+                                <label for="Phone">phone:</label>
+                            </div>
+                            <div class="input-name">
+                                <input type="text" id="Phone" name="phoneNumber" oninput="phoneValidatiojn()" autocomplete="off" required />
+                                <div class="error-msg">
+                                    <p id="phone-error"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="title-name">
+                                <label for="male">Gender:</label>
+                            </div>
+                            <div class="input-radio">
+                                <input type="radio" checked = "checked" name="gender" value="male" id="male"><label class="g-label" for="male">Male</label>
+                                <input type="radio" checked = "checked" name="gender" value="female" id="female"><label class="g-label" for="female">Female</label>
+                                <div class="error-msg">
+                                    <p id="form-error"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="title-name">
+                                <label for="playing">Hobby:</label>
+                            </div>
+                            <div class="input-checkbox">
+                            <input type="checkbox" id="playing" name="hobby" value="playing" onchange="checkboxValidation()"><label class="h-checkbox" for="playing">Playing</label>
+                            <input type="checkbox" id="reading" name="hobby" value="reading" onchange="checkboxValidation()"><label class="h-checkbox" for="reading">Reading</label>
+                            <input type="checkbox" id="Walkin" name="hobby" value="Walkin" onchange="checkboxValidation()"><label class="h-checkbox" for="Walkin">Walkin</label>
+                                <div class="error-msg">
+                                    <p id="checked-error"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="title-name">
+                                <label for="image">Image:</label>
+                            </div>
+                            <div class="input-name">
+                                <input type="file" id="image" name="image" value="img" oninput="imageValidation(event),loadFile(event)" accept=".png, .jpg, .jpeg"/>
+                                <div class="error-msg">
+                                    <p id="image-error"></p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="form-group">
+                            <div class="title-name">
+                                <label for="image"></label>
+                            </div>
+                            <div class="input-name">
+                                <div class="pre-img">
+                                    <img id="myimage" height="50px" width="50px">
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="form-group">
+                            <div class="title-name">
+                                <label for="city">City:</label>
+                            </div>
+                            <div class="input-name">
+                            <select id="city" class="dropdown" onchange="selectValidation()" name="city">
+                                <option selected value="">choose city</option>
+                                <option value="Ahmedabad">Ahmedabad</option>
+                                <option value="Surat">Surat</option>
+                                <option value="Rajkot">Rajkot</option>
+                                <option value="Baroda">Baroda</option>
+                            </select>
+                                <div class="error-msg">
+                                    <p id="city-error"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="title-name">
+                                <label for="adress">Address:</label>
+                            </div>
+                            <div class="input-name">
+                                <textarea id="Address" class="textarea" name="adress" rows="2" cols="5" oninput="addressValidation()" autocomplete="off"></textarea>
+                                <div class="error-msg">
+                                    <p id="address-error"></p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="input-submit">
+                            <input type="button" id="submit" class="submit-btn" name="btnSubmit" onclick="formvalidation()" value="submit"/>
+                        </div>
+                    </form>
+                </div>
+                <div id="arrayDtata" class="arraydata">
+                    <table class="table-data">
+                        <tr>
+                            <th>firstName</th>
+                            <th>emailId</th>
+                            <th>PhoneNo</th>
+                            <th>Hobbye</th>
+                            <th>Gender</th>
+                            <th>image</th>
+                            <th>City</th>
+                            <th>Address</th>
+                            <th>Action</th>
+                        </tr>
+                        <tbody id="tbody">
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="index.js"></script>
+</body>
+
+</html>
